@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Book AngularJS</title>
+
+<link href="css\menu.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/book.js"></script>
+</head>
+<body ng-app="BookManage" ng-controller="BookController">
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a class="active" href="book.html">Book</a></li>
+		<li><a href="borrowing.html">Borrowing</a></li>
+		<li><a href="reader.html">Reader</a></li>
+	</ul>
+	<h1 style="text-align: center;">List of Book</h1>
+
+	<form id="form-1" ng-submit="submitBook()">
+		<table border="0">
+			<tr>
+				<td>Book id:</td>
+				<td>{{bookForm.id}}</td>
+			</tr>
+			<tr>
+				<td>Name Book:</td>
+				<td><input type="text" ng-model="bookForm.nameBook" /></td>
+			</tr>
+			<tr>
+				<td>Publisher:</td>
+				<td><input type="text" ng-model="bookForm.publisher" /></td>
+			</tr>
+			<tr>
+				<td>Publishing Year:</td>
+				<td><input type="text" ng-model="bookForm.publishingYear" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit"
+					class="blue-button" /></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<a class="create-button" ng-click="createBook()">Create Book</a>
+	<table border="1">
+		<tr>
+			<th>Book id</th>
+			<th>Name Book</th>
+			<th>Publisher</th>
+			<th>Publishing Year</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<!-- $scope.book -->
+		<tr ng-repeat="book in books">
+			<td>{{book.id}}</td>
+			<td>{{book.nameBook}}</td>
+			<td>{{book.publisher}}</td>
+			<td>{{book.publishingYear}}</td>
+			<td><a ng-click="editBook(book)" class="edit-button">Edit</a></td>
+			<td><a ng-click="deleteBook(book)" class="delete-button">Delete</a></td>
+		</tr>
+	</table>
+</body>
+</html>
